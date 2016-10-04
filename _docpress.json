@@ -1,0 +1,373 @@
+{
+  "toc": {
+    "sections": [
+      {
+        "title": "Redux Extension",
+        "source": "README.md",
+        "url": "index.html",
+        "slug": "index",
+        "headings": [
+          {
+            "title": "Installation",
+            "depth": 2,
+            "id": "installation",
+            "headings": [
+              {
+                "title": "1. For Chrome",
+                "depth": 3,
+                "id": "1.-for-chrome"
+              },
+              {
+                "title": "2. For Firefox",
+                "depth": 3,
+                "id": "2.-for-firefox"
+              },
+              {
+                "title": "3. For Electron",
+                "depth": 3,
+                "id": "3.-for-electron"
+              },
+              {
+                "title": "4. For other browsers and non-browser environment",
+                "depth": 3,
+                "id": "4.-for-other-browsers-and-non-browser-environment"
+              }
+            ]
+          },
+          {
+            "title": "Usage",
+            "depth": 2,
+            "id": "usage",
+            "headings": [
+              {
+                "title": "1. With Redux",
+                "depth": 3,
+                "id": "1.-with-redux"
+              },
+              {
+                "title": "2. Without Redux",
+                "depth": 3,
+                "id": "2.-without-redux"
+              }
+            ]
+          },
+          {
+            "title": "API Reference",
+            "depth": 2,
+            "id": "api-reference"
+          },
+          {
+            "title": "Demo",
+            "depth": 2,
+            "id": "demo"
+          },
+          {
+            "title": "License",
+            "depth": 2,
+            "id": "license"
+          },
+          {
+            "title": "Created By",
+            "depth": 2,
+            "id": "created-by"
+          }
+        ]
+      },
+      {
+        "title": "API Reference",
+        "source": "docs/API/README.md",
+        "url": "API/index.html",
+        "slug": "api",
+        "sections": [
+          {
+            "title": "Parameters",
+            "source": "docs/API/Arguments.md",
+            "url": "API/Arguments.html",
+            "slug": "apiarguments"
+          },
+          {
+            "title": "Methods",
+            "source": "docs/API/Methods.md",
+            "url": "API/Methods.html",
+            "slug": "apimethods",
+            "headings": [
+              {
+                "title": "Communicate with the extension directly",
+                "depth": 2,
+                "id": "communicate-with-the-extension-directly",
+                "headings": [
+                  {
+                    "title": "open([position])",
+                    "depth": 3,
+                    "id": "open(position)"
+                  },
+                  {
+                    "title": "notifyErrors([onError])",
+                    "depth": 3,
+                    "id": "notifyerrors(onerror)"
+                  },
+                  {
+                    "title": "send(action, state, [shouldStringify, instanceId])",
+                    "depth": 3,
+                    "id": "send(action-state-shouldstringify-instanceid)"
+                  },
+                  {
+                    "title": "listen(onMessage, instanceId)",
+                    "depth": 3,
+                    "id": "listen(onmessage-instanceid)"
+                  },
+                  {
+                    "title": "connect([config])",
+                    "depth": 3,
+                    "id": "connect(config)"
+                  },
+                  {
+                    "title": "disconnect()",
+                    "depth": 3,
+                    "id": "disconnect()"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Create Redux store",
+            "source": "docs/API/Methods.md",
+            "url": "API/Methods.html",
+            "slug": "apimethods-2"
+          }
+        ]
+      },
+      {
+        "title": "Videos",
+        "source": "docs/Videos.md",
+        "url": "Videos.html",
+        "slug": "videos"
+      },
+      {
+        "title": "FAQ",
+        "source": "docs/FAQ.md",
+        "url": "FAQ.html",
+        "slug": "faq",
+        "headings": [
+          {
+            "title": "Table of Contents",
+            "depth": 2,
+            "id": "table-of-contents"
+          }
+        ]
+      },
+      {
+        "title": "Troubleshooting",
+        "source": "docs/Troubleshooting.md",
+        "url": "Troubleshooting.html",
+        "slug": "troubleshooting",
+        "headings": [
+          {
+            "title": "I just see empty log or \"No store found\"",
+            "depth": 3,
+            "id": "i-just-see-empty-log-or-\"no-store-found\""
+          },
+          {
+            "title": "Access file url (`file:///`)",
+            "depth": 3,
+            "id": "access-file-url-(file:)"
+          },
+          {
+            "title": "It shows only the `@@INIT` action or moving back and forth doesn't update the state",
+            "depth": 3,
+            "id": "it-shows-only-the-@@init-action-or-moving-back-and-forth-doesn't-update-the-state"
+          }
+        ]
+      },
+      {
+        "title": "Project",
+        "sections": [
+          {
+            "title": "Change Log",
+            "source": "CHANGELOG.md",
+            "url": "CHANGELOG.html",
+            "slug": "changelog"
+          },
+          {
+            "title": "Feedback",
+            "source": "docs/Feedback.md",
+            "url": "Feedback.html",
+            "slug": "feedback"
+          },
+          {
+            "title": "Credits",
+            "source": "docs/Credits.md",
+            "url": "Credits.html",
+            "slug": "credits"
+          }
+        ]
+      }
+    ]
+  },
+  "index": {
+    "index.html": {
+      "source": "README.md",
+      "title": "Redux Extension",
+      "pageTitle": "Redux Extension",
+      "slug": "index",
+      "headings": [
+        {
+          "title": "Installation",
+          "depth": 2,
+          "id": "installation",
+          "headings": [
+            {
+              "title": "1. For Chrome",
+              "depth": 3,
+              "id": "1.-for-chrome"
+            },
+            {
+              "title": "2. For Firefox",
+              "depth": 3,
+              "id": "2.-for-firefox"
+            },
+            {
+              "title": "3. For Electron",
+              "depth": 3,
+              "id": "3.-for-electron"
+            },
+            {
+              "title": "4. For other browsers and non-browser environment",
+              "depth": 3,
+              "id": "4.-for-other-browsers-and-non-browser-environment"
+            }
+          ]
+        },
+        {
+          "title": "Usage",
+          "depth": 2,
+          "id": "usage",
+          "headings": [
+            {
+              "title": "1. With Redux",
+              "depth": 3,
+              "id": "1.-with-redux"
+            },
+            {
+              "title": "2. Without Redux",
+              "depth": 3,
+              "id": "2.-without-redux"
+            }
+          ]
+        },
+        {
+          "title": "API Reference",
+          "depth": 2,
+          "id": "api-reference"
+        },
+        {
+          "title": "Demo",
+          "depth": 2,
+          "id": "demo"
+        },
+        {
+          "title": "License",
+          "depth": 2,
+          "id": "license"
+        },
+        {
+          "title": "Created By",
+          "depth": 2,
+          "id": "created-by"
+        }
+      ]
+    },
+    "API/index.html": {
+      "source": "docs/API/README.md",
+      "title": "API Reference - Redux Extension",
+      "pageTitle": "API Reference",
+      "slug": "api"
+    },
+    "API/Arguments.html": {
+      "source": "docs/API/Arguments.md",
+      "title": "Parameters - Redux Extension",
+      "pageTitle": "Parameters",
+      "slug": "apiarguments"
+    },
+    "API/Methods.html": {
+      "source": "docs/API/Methods.md",
+      "title": "Create Redux store - Redux Extension",
+      "pageTitle": "Create Redux store",
+      "slug": "apimethods-2"
+    },
+    "Videos.html": {
+      "source": "docs/Videos.md",
+      "title": "Videos - Redux Extension",
+      "pageTitle": "Videos",
+      "slug": "videos"
+    },
+    "FAQ.html": {
+      "source": "docs/FAQ.md",
+      "title": "FAQ - Redux Extension",
+      "pageTitle": "FAQ",
+      "slug": "faq",
+      "headings": [
+        {
+          "title": "Table of Contents",
+          "depth": 2,
+          "id": "table-of-contents"
+        }
+      ]
+    },
+    "Troubleshooting.html": {
+      "source": "docs/Troubleshooting.md",
+      "title": "Troubleshooting - Redux Extension",
+      "pageTitle": "Troubleshooting",
+      "slug": "troubleshooting",
+      "headings": [
+        {
+          "title": "I just see empty log or \"No store found\"",
+          "depth": 3,
+          "id": "i-just-see-empty-log-or-\"no-store-found\""
+        },
+        {
+          "title": "Access file url (`file:///`)",
+          "depth": 3,
+          "id": "access-file-url-(file:)"
+        },
+        {
+          "title": "It shows only the `@@INIT` action or moving back and forth doesn't update the state",
+          "depth": 3,
+          "id": "it-shows-only-the-@@init-action-or-moving-back-and-forth-doesn't-update-the-state"
+        }
+      ]
+    },
+    "CHANGELOG.html": {
+      "source": "CHANGELOG.md",
+      "title": "Change Log - Redux Extension",
+      "pageTitle": "Change Log",
+      "slug": "changelog"
+    },
+    "Feedback.html": {
+      "source": "docs/Feedback.md",
+      "title": "Feedback - Redux Extension",
+      "pageTitle": "Feedback",
+      "slug": "feedback"
+    },
+    "Credits.html": {
+      "source": "docs/Credits.md",
+      "title": "Credits - Redux Extension",
+      "pageTitle": "Credits",
+      "slug": "credits"
+    }
+  },
+  "sources": {
+    "README.md": "index.html",
+    "docs/API/README.md": "API/index.html",
+    "docs/API/Arguments.md": "API/Arguments.html",
+    "docs/API/Methods.md": "API/Methods.html",
+    "docs/Videos.md": "Videos.html",
+    "docs/FAQ.md": "FAQ.html",
+    "docs/Troubleshooting.md": "Troubleshooting.html",
+    "CHANGELOG.md": "CHANGELOG.html",
+    "docs/Feedback.md": "Feedback.html",
+    "docs/Credits.md": "Credits.html",
+    "docs/docpress.json": "docpress.json"
+  }
+}

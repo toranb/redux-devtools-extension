@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/style.css?t=d358ee59">
+    <script src="../assets/script.js?t=36f3d457"></script>
+    <title>Parameters - Redux Extension</title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="menu toc-menu">
+        <li class="menu-item -level-0 -parent">
+          <ul class="submenu">
+            <li class="menu-item -level-1"><a class="link title  link-index" href="../index.html">Redux Extension</a>
+            </li>
+            <li class="menu-item -level-1 -parent"><a class="link title  link-api" href="../API/index.html">API Reference</a>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a class="link title -active link-apiarguments" href="../API/Arguments.html">Parameters</a>
+                </li>
+                <li class="menu-item -level-2"><a class="link title  link-apimethods" href="../API/Methods.html">Methods</a>
+                </li>
+                <li class="menu-item -level-2"><a class="link title  link-apimethods-2" href="../API/Methods.html">Create Redux store</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-1"><a class="link title  link-videos" href="../Videos.html">Videos</a>
+            </li>
+            <li class="menu-item -level-1"><a class="link title  link-faq" href="../FAQ.html">FAQ</a>
+            </li>
+            <li class="menu-item -level-1"><a class="link title  link-troubleshooting" href="../Troubleshooting.html">Troubleshooting</a>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Project</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a class="link title  link-changelog" href="../CHANGELOG.html">Change Log</a>
+                </li>
+                <li class="menu-item -level-2"><a class="link title  link-feedback" href="../Feedback.html">Feedback</a>
+                </li>
+                <li class="menu-item -level-2"><a class="link title  link-credits" href="../Credits.html">Credits</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </div>
+      <div class="body page-apiarguments">
+        <div class="header-nav">
+          <div class="right"><a class="iconlink" href="https://github.com/zalmoxisus/redux-devtools-extension" data-title="zalmoxisus/redux-devtools-extension">
+              <!-- span.title Open in GitHub--><span class="icon -github"></span></a>
+          </div>
+        </div>
+        <div class="markdown-body"><h1 id="parameters">Parameters</h1>
+<p>Use <code>window.__REDUX_DEVTOOLS_EXTENSION__([config])</code> or <code>window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__([config])()</code></p>
+<ul>
+<li>[<code>config</code>] <em>(object)</em>: options
+<ul>
+<li>
+<p><strong>name</strong> (<em>string</em>) - the instance name to be showed on the monitor page. Default value is <code>document.title</code>.</p>
+</li>
+<li>
+<p><strong>actionCreators</strong> (<em>array</em> or <em>object</em>) - action creators to dispatch remotely. See <a href="https://github.com/zalmoxisus/redux-devtools-extension/commit/477e69d8649dfcdc9bf84dd45605dab7d9775c03">the example</a>.</p>
+</li>
+<li>
+<p><strong>maxAge</strong> (<em>number</em>) - maximum allowed actions to be stored on the history tree, the oldest actions are removed once maxAge is reached. Default is <code>50</code>.</p>
+</li>
+<li>
+<p><strong>shouldCatchErrors</strong> (<em>boolean</em>) - if specified as <code>true</code>, whenever there&#x2019;s an exception in reducers, the monitors will show the error message, and next actions will not be dispatched.</p>
+</li>
+<li>
+<p><strong>shouldRecordChanges</strong> (<em>boolean</em>) - if specified as <code>false</code>, it will not record the changes till clicking on <code>Start recording</code> button. Default is <code>true</code>.</p>
+</li>
+<li>
+<p><strong>pauseActionType</strong> (<em>string</em>) - if specified, whenever clicking on <code>Pause recording</code> button and there are actions in the history log, will add this action type. If not specified, will commit when paused. Default is <code>@@PAUSED</code>.</p>
+</li>
+<li>
+<p><strong>shouldStartLocked</strong> (<em>boolean</em>) - if specified as <code>true</code>, it will not allow any non-monitor actions to be dispatched till clicking on <code>Unlock changes</code> button. Default is <code>false</code>.</p>
+</li>
+<li>
+<p><strong>shouldHotReload</strong> <em>boolean</em> - if set to <code>false</code>, will not recompute the states on hot reloading (or on replacing the reducers). Default to <code>true</code>.</p>
+</li>
+<li>
+<p><strong>deserializeState(state): transformedState</strong> (<em>function</em>) - optional transformation of state deserialized from debug session (useful if state is not plain object. Example: immutable-js state)</p>
+<ul>
+<li>
+<p>state, transformedState - Redux state objects.
+Example of usage:</p>
+<pre><code class="lang-js"><span class="pl-k">const</span> store = createStore(rootReducer, <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__({
+  <span class="hljs-attr">deserializeState</span>: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> ({
+    <span class="hljs-attr">todos</span>: {
+      ...state.todos,
+      <span class="hljs-attr">todoList</span>: Immutable.fromJS(state.todos.todoList)
+    }
+  })
+}));
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>deserializeAction(action): transformedAction</strong> (<em>function</em>) - optional transformation of actions deserialized from debug session (useful if actions are not plain object. Example: immutable-js action payload)</p>
+<ul>
+<li>action, transformedAction - Redux action objects</li>
+</ul>
+</li>
+<li>
+<p><strong>serializeState(key, value): transformedState</strong> (<em>function</em>) - optional serialization function (useful if state is not plain object. Example: for mori data structures)
+Example of usage:</p>
+<pre><code class="lang-js"><span class="pl-k">const</span> store = Redux.createStore(reducer, <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__({
+  <span class="hljs-attr">serializeState</span>: <span class="hljs-function">(<span class="hljs-params">key, value</span>) =&gt;</span> (
+    value &amp;&amp; mori.isMap(value) ? mori.toJs(value) : value
+  )
+}));
+</code></pre>
+</li>
+<li>
+<p><strong>serializeAction(key, value): transformedAction</strong> (<em>function</em>) - optional serialization function (useful if actions are not plain object. Example: for mori data structures in actions payload)</p>
+</li>
+<li>
+<p><strong>actionsBlacklist</strong> (<em>array</em>) - actions to be hidden in DevTools. Overwrites corresponding global setting in the options page.</p>
+</li>
+<li>
+<p><strong>actionsWhitelist</strong> (<em>array</em>) - all other actions will be hidden in DevTools. Overwrites corresponding global setting in the options page.</p>
+</li>
+<li>
+<p><strong>actionsFilter</strong> (<em>function</em>) - function which takes <code>action</code> object and id number as arguments, and should return <code>action</code> object back. See the example bellow.</p>
+</li>
+<li>
+<p><strong>statesFilter</strong> (<em>function</em>) - function which takes <code>state</code> object and index as arguments, and should return <code>state</code> object back.
+Example of usage:</p>
+<pre><code class="lang-js"><span class="pl-k">const</span> actionsFilter = <span class="hljs-function">(<span class="hljs-params">action</span>) =&gt;</span> (
+  action.type === <span class="pl-s">&apos;FILE_DOWNLOAD_SUCCESS&apos;</span> &amp;&amp; action.data ?
+  { ...action, <span class="hljs-attr">data</span>: <span class="pl-s">&apos;&lt;&lt;LONG_BLOB&gt;&gt;&apos;</span> } : action
+);
+<span class="pl-k">const</span> store = createStore(rootReducer, <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__({
+  actionsFilter,
+  <span class="hljs-attr">statesFilter</span>: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> state.data ? { ...state, <span class="hljs-attr">data</span>: <span class="pl-s">&apos;&lt;&lt;LONG_BLOB&gt;&gt;&apos;</span> } : state
+}));
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <div class="footer-nav">
+          <div class="left"><a href="../API/index.html"><span class="title">API Reference</span></a></div>
+          <div class="right"><a href="../API/Methods.html"><span class="label">Next: </span><span class="title">Create Redux store</span></a></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

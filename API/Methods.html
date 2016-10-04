@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/style.css?t=d358ee59">
+    <script src="../assets/script.js?t=36f3d457"></script>
+    <title>Create Redux store - Redux Extension</title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="menu toc-menu">
+        <li class="menu-item -level-0 -parent">
+          <ul class="submenu">
+            <li class="menu-item -level-1"><a class="link title  link-index" href="../index.html">Redux Extension</a>
+            </li>
+            <li class="menu-item -level-1 -parent"><a class="link title  link-api" href="../API/index.html">API Reference</a>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a class="link title  link-apiarguments" href="../API/Arguments.html">Parameters</a>
+                </li>
+                <li class="menu-item -level-2"><a class="link title -active link-apimethods" href="../API/Methods.html">Methods</a>
+                  <ul class="headings heading-list">
+                    <li class="heading-item -depth-2"><a class="hlink link-communicate-with-the-extension-directly" href="#communicate-with-the-extension-directly">Communicate with the extension directly</a>
+                      <ul class="heading-list -depth-2">
+                        <li class="heading-item -depth-3"><a class="hlink link-open(position)" href="#open(position)">open([position])</a>
+                        </li>
+                        <li class="heading-item -depth-3"><a class="hlink link-notifyerrors(onerror)" href="#notifyerrors(onerror)">notifyErrors([onError])</a>
+                        </li>
+                        <li class="heading-item -depth-3"><a class="hlink link-send(action-state-shouldstringify-instanceid)" href="#send(action-state-shouldstringify-instanceid)">send(action, state, [shouldStringify, instanceId])</a>
+                        </li>
+                        <li class="heading-item -depth-3"><a class="hlink link-listen(onmessage-instanceid)" href="#listen(onmessage-instanceid)">listen(onMessage, instanceId)</a>
+                        </li>
+                        <li class="heading-item -depth-3"><a class="hlink link-connect(config)" href="#connect(config)">connect([config])</a>
+                        </li>
+                        <li class="heading-item -depth-3"><a class="hlink link-disconnect()" href="#disconnect()">disconnect()</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li class="menu-item -level-2"><a class="link title -active link-apimethods-2" href="../API/Methods.html">Create Redux store</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-1"><a class="link title  link-videos" href="../Videos.html">Videos</a>
+            </li>
+            <li class="menu-item -level-1"><a class="link title  link-faq" href="../FAQ.html">FAQ</a>
+            </li>
+            <li class="menu-item -level-1"><a class="link title  link-troubleshooting" href="../Troubleshooting.html">Troubleshooting</a>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Project</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a class="link title  link-changelog" href="../CHANGELOG.html">Change Log</a>
+                </li>
+                <li class="menu-item -level-2"><a class="link title  link-feedback" href="../Feedback.html">Feedback</a>
+                </li>
+                <li class="menu-item -level-2"><a class="link title  link-credits" href="../Credits.html">Credits</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </div>
+      <div class="body page-apimethods-2">
+        <div class="header-nav">
+          <div class="right"><a class="iconlink" href="https://github.com/zalmoxisus/redux-devtools-extension" data-title="zalmoxisus/redux-devtools-extension">
+              <!-- span.title Open in GitHub--><span class="icon -github"></span></a>
+          </div>
+        </div>
+        <div class="markdown-body"><h2 id="communicate-with-the-extension-directly">Communicate with the extension directly</h2>
+<blockquote>
+<p>Note that this API is still excremental and is subject to future changes.</p>
+</blockquote>
+<p>Use the following methods of <code>window.__REDUX_DEVTOOLS_EXTENSION__</code>:</p>
+<ul>
+<li><a href="#openposition">open</a></li>
+<li><a href="#notifyerrorsonerror">notifyErrors</a></li>
+<li><a href="#listenonmessage-instanceid">send</a></li>
+<li><a href="#connectconfig">connect</a></li>
+<li><a href="#disconnect">disconnect</a></li>
+</ul>
+<h3 id="open(position)">open([position])</h3>
+<p>Open monitor window.</p>
+<h5 id="arguments">Arguments</h5>
+<ul>
+<li>[<code>position</code>] <em>String</em> - window position: <code>left</code>, <code>right</code>, <code>bottom</code>. Also can be <code>panel</code> to <a href="../FAQ.html#how-to-keep-devtools-window-focused-all-the-time-in-a-chrome-panel">open it in a Chrome panel</a>. Or <code>remote</code> to <a href="../FAQ.html#how-to-get-it-work-with-webworkers-react-native-hybrid-desktop-and-server-side-apps">open remote monitor</a>. By default is <code>left</code>.</li>
+</ul>
+<h3 id="notifyerrors(onerror)">notifyErrors([onError])</h3>
+<p>Show notifications for uncaught exceptions.</p>
+<h5 id="arguments">Arguments</h5>
+<ul>
+<li>[<code>onError</code>] <em>Function</em> to call when there&#x2019;s an exceptions.</li>
+</ul>
+<h3 id="send(action-state-shouldstringify-instanceid)">send(action, state, [shouldStringify, instanceId])</h3>
+<p>Send a new action and state manually to be shown on the monitor.</p>
+<h5 id="arguments">Arguments</h5>
+<ul>
+<li><code>action</code> <em>String</em> (action type) or <em>Object</em> with required <code>type</code> key.</li>
+<li><code>state</code> <em>any</em> - usually object to expand.</li>
+<li>[<code>shouldStringify</code>] <em>Boolean</em> - indicates whether to serialize <code>action</code> and <code>state</code>.</li>
+<li>[<code>instanceId</code>] <em>String</em> - instance id for which to attach the log.</li>
+</ul>
+<h3 id="listen(onmessage-instanceid)">listen(onMessage, instanceId)</h3>
+<p>Send a new action and state manually to be shown on the monitor.</p>
+<h5 id="arguments">Arguments</h5>
+<ul>
+<li><code>onMessage</code> <em>Function</em> to call when there&#x2019;s an action form the monitor.</li>
+<li><code>instanceId</code> <em>String</em> - instance id for which to handle actions.</li>
+</ul>
+<h3 id="connect(config)">connect([config])</h3>
+<h5 id="arguments">Arguments</h5>
+<ul>
+<li>[<code>config</code>] <em>Object</em> intended to be the same as for <a href="Arguments.html#windowdevtoolsextensionconfig">Redux store enhancer</a>. For now only <code>instanceId</code> and <code>shouldStringify</code> should be specified.</li>
+</ul>
+<h5 id="returns">Returns</h5>
+<p><em>Object</em> containing the following methods:</p>
+<ul>
+<li><code>subscribe(listener)</code> - adds a change listener. It will be called any time an action is dispatched form the monitor.</li>
+<li><code>unsubscribe()</code> - unsubscribes the change listener. You can use <a href="#disconnect">window.<strong>REDUX_DEVTOOLS_EXTENSION</strong>.disconnect</a> to remove all listeners.</li>
+<li><code>send(action, state)</code> - sends a new action and state manually to be shown on the monitor. If action is <code>null</code> then we suppose we send <code>liftedState</code>.</li>
+<li><code>init(state)</code> - sends the initial state to the monitor.</li>
+<li><code>error(message)</code> - sends the error message to be shown in Dispatcher monitor.</li>
+</ul>
+<p>Example of usage:</p>
+<pre><code class="lang-js"><span class="pl-k">let</span> isStarted = <span class="pl-c1">false</span>;
+<span class="pl-k">let</span> isLiftedAction = <span class="pl-c1">false</span>;
+
+<span class="pl-k">const</span> devTools = <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__.connect();
+devTools.subscribe(<span class="hljs-function">(<span class="hljs-params">message</span>) =&gt;</span> {
+  <span class="pl-k">if</span> (message.type === <span class="pl-s">&apos;START&apos;</span>) {
+    isStarted = <span class="pl-c1">true</span>;
+    devTools.send(<span class="pl-c1">null</span>, store.liftedStore.getState());
+  } <span class="pl-k">else</span> <span class="pl-k">if</span> (message.type === <span class="pl-s">&apos;STOP&apos;</span>) {
+    isStarted = <span class="pl-c1">false</span>;
+  } <span class="pl-k">else</span> <span class="pl-k">if</span> (message.type === <span class="pl-s">&apos;DISPATCH&apos;</span> &amp;&amp; message.payload.type !== <span class="pl-s">&apos;JUMP_TO_STATE&apos;</span>) {
+    isLiftedAction = <span class="pl-c1">true</span>;
+    store.liftedStore.dispatch(message.payload);
+  } <span class="pl-k">else</span> <span class="pl-k">if</span> (message.type === <span class="pl-s">&apos;ACTION&apos;</span>) { <span class="pl-c">// Received a store action from Dispatch monitor</span>
+    store.dispatch(message.payload);
+  } 
+});
+
+store.subscribe(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="pl-k">if</span> (!isStarted) <span class="pl-k">return</span>;
+  <span class="pl-k">const</span> liftedState = store.liftedStore.getState();
+  <span class="pl-k">if</span> (isLiftedAction) { devTools.send(<span class="pl-c1">null</span>, liftedState); isLiftedAction = <span class="pl-c1">false</span>; }
+  <span class="pl-k">else</span> devTools.send(liftedState.actionsById[liftedState.nextActionId - <span class="hljs-number">1</span>], store.getState());
+});
+</code></pre>
+<p>There&#x2019;s <a href="https://github.com/zalmoxisus/redux-devtools-extension/blob/master/examples/react-counter-messaging/components/Counter.js">a simpler example</a>.</p>
+<p><a href="https://medium.com/@zalmoxis/redux-devtools-without-redux-or-how-to-have-a-predictable-state-with-any-architecture-61c5f5a7716f">See the post for more details</a>.</p>
+<h3 id="disconnect()">disconnect()</h3>
+<p>Remove extensions listener and disconnect extensions background script connection.</p>
+
+        </div>
+        <div class="footer-nav">
+          <div class="left"><a href="../API/Arguments.html"><span class="title">Parameters</span></a></div>
+          <div class="right"><a href="../Videos.html"><span class="label">Next: </span><span class="title">Videos</span></a></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

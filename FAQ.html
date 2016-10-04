@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/style.css?t=d358ee59">
+    <script src="assets/script.js?t=36f3d457"></script>
+    <title>FAQ - Redux Extension</title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="menu toc-menu">
+        <li class="menu-item -level-0 -parent">
+          <ul class="submenu">
+            <li class="menu-item -level-1"><a class="link title  link-index" href="index.html">Redux Extension</a>
+            </li>
+            <li class="menu-item -level-1 -parent"><a class="link title  link-api" href="API/index.html">API Reference</a>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a class="link title  link-apiarguments" href="API/Arguments.html">Parameters</a>
+                </li>
+                <li class="menu-item -level-2"><a class="link title  link-apimethods" href="API/Methods.html">Methods</a>
+                </li>
+                <li class="menu-item -level-2"><a class="link title  link-apimethods-2" href="API/Methods.html">Create Redux store</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-1"><a class="link title  link-videos" href="Videos.html">Videos</a>
+            </li>
+            <li class="menu-item -level-1"><a class="link title -active link-faq" href="FAQ.html">FAQ</a>
+              <ul class="headings heading-list">
+                <li class="heading-item -depth-2"><a class="hlink link-table-of-contents" href="#table-of-contents">Table of Contents</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-1"><a class="link title  link-troubleshooting" href="Troubleshooting.html">Troubleshooting</a>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Project</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a class="link title  link-changelog" href="CHANGELOG.html">Change Log</a>
+                </li>
+                <li class="menu-item -level-2"><a class="link title  link-feedback" href="Feedback.html">Feedback</a>
+                </li>
+                <li class="menu-item -level-2"><a class="link title  link-credits" href="Credits.html">Credits</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </div>
+      <div class="body page-faq">
+        <div class="header-nav">
+          <div class="right"><a class="iconlink" href="https://github.com/zalmoxisus/redux-devtools-extension" data-title="zalmoxisus/redux-devtools-extension">
+              <!-- span.title Open in GitHub--><span class="icon -github"></span></a>
+          </div>
+        </div>
+        <div class="markdown-body"><h1 id="redux-devtools-extension-faq">Redux DevTools Extension FAQ</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#how-to-get-it-work">How to get it work</a></li>
+<li><a href="#how-to-filter-actions">How to filter actions</a></li>
+<li><a href="#how-to-disableenable-it-in-production">How to disable/enable it in production</a></li>
+<li><a href="#how-to-persist-debug-sessions-across-page-reloads">How to persist debug sessions across page reloads</a></li>
+<li><a href="#how-to-include-it-in-chrome-apps-and-extensions">How to include it in chrome apps and extensions</a></li>
+<li><a href="#how-to-open-devtools-programmatically">How to open DevTools programmatically</a></li>
+<li><a href="#how-to-open-devtools-programmatically">How to keep DevTools window focused all the time in a chrome panel</a></li>
+<li><a href="#how-to-include-devtools-in-the-page">How to include DevTools in the page</a></li>
+<li><a href="#how-to-enabledisable-errors-notifying">How to enable/disable errors notifying</a></li>
+<li><a href="#how-to-get-it-work-with-webworkers-react-native-hybrid-desktop-and-server-side-apps">How to get it work with WebWorkers, React Native, hybrid, desktop and server side apps</a></li>
+<li><a href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
+<li><a href="#how-to-change-keyboard-shortcuts">How to change keyboard shortcuts</a></li>
+</ul>
+<h4 id="how-to-get-it-work">How to get it work</h4>
+<ul>
+<li>Check the extension with <a href="http://zalmoxisus.github.io/redux-devtools-extension/examples/counter/">Counter</a> or <a href="http://zalmoxisus.github.io/redux-devtools-extension/examples/todomvc/">TodoMVC</a> demo.</li>
+<li>Reload the extension on the extensions page (<code>chrome://extensions/</code>).</li>
+<li>If something goes wrong, <a href="https://github.com/zalmoxisus/redux-devtools-extension/issues">open an issue</a> or tweet me: <a href="https://twitter.com/mdiordiev">@mdiordiev</a>.</li>
+</ul>
+<h4 id="how-to-filter-actions">How to filter actions</h4>
+<p>On the options page you may enable actions filtering and specify either actions to be hidden or shown in DevTools. If the latter is specified, other than those actions will be hidden.
+You can overwrite these settings for an individual project using <code>actionsBlacklist</code> and <code>actionsWhitelist</code> <a href="https://github.com/zalmoxisus/redux-devtools-extension/blob/master/docs/API/Arguments.md#windowdevtoolsextensionconfig">config options</a>.</p>
+<h4 id="how-to-disableenable-it-in-production">How to disable/enable it in production</h4>
+<p>A good practice (for other libraries as React as well) is to have a global variable set in webpack config, which indicates the environment like</p>
+<pre><code class="lang-js">globals: {
+    <span class="pl-s">&apos;process.env&apos;</span>: {
+      <span class="hljs-attr">NODE_ENV</span>: <span class="pl-s">&apos;&quot;production&quot;&apos;</span>
+    }
+  }
+</code></pre>
+<p>and add <code>process.env.NODE_ENV !== &apos;production&apos; &amp;&amp;</code> before <code>window.__REDUX_DEVTOOLS_EXTENSION__</code> or <code>window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__</code>
+and you can use the extension as follows:</p>
+<pre><code class="lang-js"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">configureStore</span>(<span class="hljs-params">preloadedState</span>) </span>{
+  <span class="pl-k">const</span> store = createStore(reducer, preloadedState,
+    process.env.NODE_ENV !== <span class="pl-s">&apos;production&apos;</span> &amp;&amp;
+    <span class="pl-k">typeof</span> <span class="pl-c1">window</span> !== <span class="pl-s">&apos;undefined&apos;</span> &amp;&amp; <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp;
+    <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__()
+  );
+  <span class="pl-k">return</span> store;
+}
+</code></pre>
+<h4 id="how-to-persist-debug-sessions-across-page-reloads">How to persist debug sessions across page reloads</h4>
+<p>Just add <code>?debug_session=&lt;session_name&gt;</code> to the url.</p>
+<h4 id="how-to-include-it-in-chrome-apps-and-extensions">How to include it in chrome apps and extensions</h4>
+<p>Unlike web apps, Chrome extension doesn&#x2019;t inject anything in other chrome extensions or apps, so you have to do it by yourself to allow debugging. Just add:</p>
+<pre><code>&lt;script src=&quot;chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/inject.bundle.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>To include it in a chrome extension&#x2019;s content script follow <a href="https://github.com/zalmoxisus/browser-redux/commit/df2db9ee11f2d197c4329b2c8a6e197da1edffd4">the example</a>.</p>
+<h4 id="how-to-open-devtools-programmatically">How to open DevTools programmatically</h4>
+<pre><code class="lang-js"><span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__.open();
+</code></pre>
+<p>See the <a href="https://github.com/zalmoxisus/redux-devtools-extension/blob/master/docs/API/Methods.md#windowdevtoolsextensionopenposition">API details</a>.</p>
+<h4 id="how-to-keep-devtools-window-focused-all-the-time-in-a-chrome-panel">How to keep DevTools window focused all the time in a chrome panel</h4>
+<p>To enable chrome panels feature in Chrome, type in <code>chrome://flags/#enable-panels</code> in the url bar and click on &#x201C;enable&#x201D; under &#x201C;enable panels&#x201D;. Make sure to click on &quot;relaunch now &quot; at the bottom of the page, to take effect.</p>
+<h4 id="how-to-include-devtools-in-the-page">How to include DevTools in the page</h4>
+<p>You can open DevTools in a new window (by opening context menu with right mouse click), from popup (clicking on the browser action button) or from Chrome dev panel. If you still, for some reason, want to include it directly in your page, load the following url in iframe: <code>chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/window.html</code>. You&#x2019;d probably include it in a docker or in a resizeable component.</p>
+<h4 id="how-to-enabledisable-errors-notifying">How to enable/disable errors notifying</h4>
+<p>Just find <code>Redux DevTools</code> on the extensions page (<code>chrome://extensions/</code>) and click the <code>Options</code> link to customize everything. The errors notifying is enabled by default, but it works only when the store enhancer is called (in order not to show notifications for any sites you visit). In case you want notifications for a non-redux app, init it explicitly by calling <code>window.__REDUX_DEVTOOLS_EXTENSION__.notifyErrors()</code> (probably you&#x2019;ll check if <code>window.__REDUX_DEVTOOLS_EXTENSION__</code> exists before calling it).</p>
+<h4 id="how-to-get-it-work-with-webworkers-react-native-hybrid-desktop-and-server-side-apps">How to get it work with WebWorkers, React Native, hybrid, desktop and server side apps</h4>
+<p>Of course, it is not possible to inject extension&#x2019;s script there and to communicate directly. To solve this we use <a href="https://github.com/zalmoxisus/remote-redux-devtools">Remote Redux DevTools</a>. Just find <code>Remote</code> button or press <code>Alt</code>+<code>Shift</code>+<code>arrow up</code> for remote monitoring.</p>
+<h4 id="keyboard-shortcuts">Keyboard shortcuts</h4>
+<p>Use <code>Cmd</code>+<code>Ctrl</code>+Arrows for OSX and <code>Alt</code>+<code>Shift</code>+Arrows for Windows, Linux and ChromeOS. Arrow down, left and right indicate the position of the DevTools window. Use <code>arrow up</code> to open Remote monitoring to communicate with <a href="https://github.com/zalmoxisus/remote-redux-devtools">Remote Redux DevTools</a>. To change the shortcuts, click &#x201C;Keyboard shortcuts&#x201D; button on the bottom of the extensions page (<code>chrome://extensions/</code>).</p>
+<h4 id="how-to-change-keyboard-shortcuts">How to change keyboard shortcuts</h4>
+<p>On the bottom of <code>chrome://extensions/</code> page there&#x2019;s a &#x201C;Keyboard shortcuts&#x201D; link where you can customize the extension&#x2019;s shortcuts.</p>
+
+        </div>
+        <div class="footer-nav">
+          <div class="left"><a href="Videos.html"><span class="title">Videos</span></a></div>
+          <div class="right"><a href="Troubleshooting.html"><span class="label">Next: </span><span class="title">Troubleshooting</span></a></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

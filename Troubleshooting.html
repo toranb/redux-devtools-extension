@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/style.css?t=d358ee59">
+    <script src="assets/script.js?t=36f3d457"></script>
+    <title>Troubleshooting - Redux Extension</title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="menu toc-menu">
+        <li class="menu-item -level-0 -parent">
+          <ul class="submenu">
+            <li class="menu-item -level-1"><a class="link title  link-index" href="index.html">Redux Extension</a>
+            </li>
+            <li class="menu-item -level-1 -parent"><a class="link title  link-api" href="API/index.html">API Reference</a>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a class="link title  link-apiarguments" href="API/Arguments.html">Parameters</a>
+                </li>
+                <li class="menu-item -level-2"><a class="link title  link-apimethods" href="API/Methods.html">Methods</a>
+                </li>
+                <li class="menu-item -level-2"><a class="link title  link-apimethods-2" href="API/Methods.html">Create Redux store</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-1"><a class="link title  link-videos" href="Videos.html">Videos</a>
+            </li>
+            <li class="menu-item -level-1"><a class="link title  link-faq" href="FAQ.html">FAQ</a>
+            </li>
+            <li class="menu-item -level-1"><a class="link title -active link-troubleshooting" href="Troubleshooting.html">Troubleshooting</a>
+              <ul class="headings heading-list">
+                <li class="heading-item -depth-3"><a class="hlink link-i-just-see-empty-log-or-&quot;no-store-found&quot;" href="#i-just-see-empty-log-or-&quot;no-store-found&quot;">I just see empty log or &quot;No store found&quot;</a>
+                </li>
+                <li class="heading-item -depth-3"><a class="hlink link-access-file-url-(file:)" href="#access-file-url-(file:)">Access file url (`file:///`)</a>
+                </li>
+                <li class="heading-item -depth-3"><a class="hlink link-it-shows-only-the-@@init-action-or-moving-back-and-forth-doesn't-update-the-state" href="#it-shows-only-the-@@init-action-or-moving-back-and-forth-doesn't-update-the-state">It shows only the `@@INIT` action or moving back and forth doesn't update the state</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Project</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a class="link title  link-changelog" href="CHANGELOG.html">Change Log</a>
+                </li>
+                <li class="menu-item -level-2"><a class="link title  link-feedback" href="Feedback.html">Feedback</a>
+                </li>
+                <li class="menu-item -level-2"><a class="link title  link-credits" href="Credits.html">Credits</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </div>
+      <div class="body page-troubleshooting">
+        <div class="header-nav">
+          <div class="right"><a class="iconlink" href="https://github.com/zalmoxisus/redux-devtools-extension" data-title="zalmoxisus/redux-devtools-extension">
+              <!-- span.title Open in GitHub--><span class="icon -github"></span></a>
+          </div>
+        </div>
+        <div class="markdown-body"><h1 id="troubleshooting">Troubleshooting</h1>
+<h3 id="i-just-see-empty-log-or-&quot;no-store-found&quot;">I just see empty log or &#x201C;No store found&#x201D;</h3>
+<p>Make sure you <a href="https://github.com/zalmoxisus/redux-devtools-extension#2-use-with-redux">applied the enhancer</a>. Note that passing enhancer as last argument requires redux@&gt;=3.1.0. For older versions apply it like <a href="https://github.com/zalmoxisus/redux-devtools-extension/blob/v0.4.2/examples/todomvc/store/configureStore.js">here</a> or <a href="https://github.com/zalmoxisus/redux-devtools-extension/blob/v0.4.2/examples/counter/store/configureStore.js#L7-L12">here</a>.</p>
+<p>Don&#x2019;t mix the old Redux API with the new one. Pass enhancers and applyMiddleware as last createStore argument.</p>
+<h3 id="access-file-url-(file:)">Access file url (<code>file:///</code>)</h3>
+<p>If you develop on your local filesystem, make sure to allow Redux DevTools access to <code>file:///</code> URLs in the settings of this extension:</p>
+<img width="746" alt="extensions" src="https://cloud.githubusercontent.com/assets/7957859/19075220/a0fad99e-8a4c-11e6-8b87-757f2dc179cb.png">
+<h3 id="it-shows-only-the-@@init-action-or-moving-back-and-forth-doesn&apos;t-update-the-state">It shows only the <code>@@INIT</code> action or moving back and forth doesn&#x2019;t update the state</h3>
+<p>Most likely you mutate the state. Check it by <a href="https://github.com/zalmoxisus/redux-devtools-extension/blob/master/examples/counter/store/configureStore.js#L3">adding <code>redux-immutable-state-invariant</code> middleware</a>.</p>
+
+        </div>
+        <div class="footer-nav">
+          <div class="left"><a href="FAQ.html"><span class="title">FAQ</span></a></div>
+          <div class="right"><a href="CHANGELOG.html"><span class="label">Next: </span><span class="title">Change Log</span></a></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
