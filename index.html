@@ -45,6 +45,44 @@
                 </li>
               </ul>
             </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Introduction</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><span class="title">Installation</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Usage</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Ecosystem</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Examples</span>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Basics</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><span class="title">Monitors</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Instances</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Time traveling and hot-reloading</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Remote debugging</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Dispatching actions</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Generating tests</span>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Advanced</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><span class="title">Using in production</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Getting reports from users</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Dealing with side effects</span>
+                </li>
+              </ul>
+            </li>
             <li class="menu-item -level-1 -parent"><a class="link title  link-api" href="API/index.html">API Reference</a>
               <ul class="submenu">
                 <li class="menu-item -level-2"><a class="link title  link-apiarguments" href="API/Arguments.html">Parameters</a>
@@ -104,6 +142,9 @@
 <li>use <a href="https://github.com/zalmoxisus/remote-redux-devtools"><code>remote-redux-devtools</code></a>.</li>
 </ul>
 <h2 id="usage">Usage</h2>
+<blockquote>
+<p>Note that before v2.7, instead of <code>window.__REDUX_DEVTOOLS_EXTENSION__</code> / <code>window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__</code>, it was used <code>window.devToolsExtension</code>, which is <a href="https://github.com/zalmoxisus/redux-devtools-extension/issues/220">being deprecated</a>.</p>
+</blockquote>
 <h3 id="1.-with-redux">1. With Redux</h3>
 <h4 id="1.1-basic-store">1.1 Basic store</h4>
 <p>If you have a basic <a href="http://redux.js.org/docs/api/createStore.html">store</a> as described in the official <a href="http://redux.js.org/index.html">redux-docs</a>, simply replace:</p>
@@ -118,6 +159,13 @@
 );
 </code></pre>
 <p>Note: passing enhancer as last argument requires <strong>redux@&gt;=3.1.0</strong>. For older versions apply it like <a href="https://github.com/zalmoxisus/redux-devtools-extension/blob/v0.4.2/examples/todomvc/store/configureStore.js">here</a> or <a href="https://github.com/zalmoxisus/redux-devtools-extension/blob/v0.4.2/examples/counter/store/configureStore.js#L7-L12">here</a>.</p>
+<p>In case the linter doesn&#x2019;t allow using the underscore dangle, you need to wrap it like so:</p>
+<pre><code class="lang-js"><span class="pl-c">/* eslint-disable no-underscore-dangle */</span>
+<span class="pl-k">const</span> store = createStore(reducer, preloadedState, 
+  <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__()
+);
+<span class="pl-c">/* eslint-enable */</span>
+</code></pre>
 <p>Warning: Don&#x2019;t mix the old Redux API with the new one. Pass enhancers and applyMiddleware as last createStore argument.</p>
 <h4 id="1.2-advanced-store-setup">1.2 Advanced store setup</h4>
 <p>If you setup your store with <a href="http://redux.js.org/docs/api/applyMiddleware.html">middleware and enhancers</a>, change this:</p>
@@ -143,7 +191,7 @@
   <span class="pl-k">typeof</span> <span class="pl-c1">window</span> === <span class="pl-s">&apos;object&apos;</span> &amp;&amp;
   <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
     <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-      <span class="hljs-attr">name</span>: <span class="pl-s">&apos;MyApp&apos;</span>, <span class="hljs-attr">actionsBlacklist</span>: [<span class="pl-s">&apos;REDUX_STORAGE_SAVE&apos;</span>]
+      <span class="pl-c">// Specify here name, actionsBlacklist, actionsCreators and other options</span>
     }) : compose;
 
 <span class="pl-k">const</span> enhancer = composeEnhancers(
@@ -171,7 +219,7 @@
 <span class="pl-k">import</span> { composeWithDevTools } <span class="pl-k">from</span> <span class="pl-s">&apos;redux-devtools-extension&apos;</span>;
 
 <span class="pl-k">const</span> composeEnhancers = composeWithDevTools({
-  <span class="hljs-attr">name</span>: <span class="pl-s">&apos;MyApp&apos;</span>, <span class="hljs-attr">actionsBlacklist</span>: [<span class="pl-s">&apos;REDUX_STORAGE_SAVE&apos;</span>]
+  <span class="pl-c">// Specify here name, actionsBlacklist, actionsCreators and other options</span>
 });
 <span class="pl-k">const</span> store = createStore(reducer, composeEnhancers(
   applyMiddleware(...middleware),

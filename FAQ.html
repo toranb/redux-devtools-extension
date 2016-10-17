@@ -15,6 +15,44 @@
           <ul class="submenu">
             <li class="menu-item -level-1"><a class="link title  link-index" href="index.html">Redux Extension</a>
             </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Introduction</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><span class="title">Installation</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Usage</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Ecosystem</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Examples</span>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Basics</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><span class="title">Monitors</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Instances</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Time traveling and hot-reloading</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Remote debugging</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Dispatching actions</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Generating tests</span>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Advanced</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><span class="title">Using in production</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Getting reports from users</span>
+                </li>
+                <li class="menu-item -level-2"><span class="title">Dealing with side effects</span>
+                </li>
+              </ul>
+            </li>
             <li class="menu-item -level-1 -parent"><a class="link title  link-api" href="API/index.html">API Reference</a>
               <ul class="submenu">
                 <li class="menu-item -level-2"><a class="link title  link-apiarguments" href="API/Arguments.html">Parameters</a>
@@ -72,7 +110,7 @@
 </ul>
 <h4 id="how-to-get-it-work">How to get it work</h4>
 <ul>
-<li>Check the extension with <a href="http://zalmoxisus.github.io/redux-devtools-extension/examples/counter/">Counter</a> or <a href="http://zalmoxisus.github.io/redux-devtools-extension/examples/todomvc/">TodoMVC</a> demo.</li>
+<li>Check the extension with <a href="http://zalmoxisus.github.io/examples/counter/">Counter</a> or <a href="http://zalmoxisus.github.io/examples/todomvc/">TodoMVC</a> demo.</li>
 <li>Reload the extension on the extensions page (<code>chrome://extensions/</code>).</li>
 <li>If something goes wrong, <a href="https://github.com/zalmoxisus/redux-devtools-extension/issues">open an issue</a> or tweet me: <a href="https://twitter.com/mdiordiev">@mdiordiev</a>.</li>
 </ul>
@@ -118,9 +156,7 @@ and you can use the extension as follows:</p>
 <h4 id="how-to-get-it-work-with-webworkers-react-native-hybrid-desktop-and-server-side-apps">How to get it work with WebWorkers, React Native, hybrid, desktop and server side apps</h4>
 <p>Of course, it is not possible to inject extension&#x2019;s script there and to communicate directly. To solve this we use <a href="https://github.com/zalmoxisus/remote-redux-devtools">Remote Redux DevTools</a>. Just find <code>Remote</code> button or press <code>Alt</code>+<code>Shift</code>+<code>arrow up</code> for remote monitoring.</p>
 <h4 id="keyboard-shortcuts">Keyboard shortcuts</h4>
-<p>Use <code>Cmd</code>+<code>Ctrl</code>+Arrows for OSX and <code>Alt</code>+<code>Shift</code>+Arrows for Windows, Linux and ChromeOS. Arrow down, left and right indicate the position of the DevTools window. Use <code>arrow up</code> to open Remote monitoring to communicate with <a href="https://github.com/zalmoxisus/remote-redux-devtools">Remote Redux DevTools</a>. To change the shortcuts, click &#x201C;Keyboard shortcuts&#x201D; button on the bottom of the extensions page (<code>chrome://extensions/</code>).</p>
-<h4 id="how-to-change-keyboard-shortcuts">How to change keyboard shortcuts</h4>
-<p>On the bottom of <code>chrome://extensions/</code> page there&#x2019;s a &#x201C;Keyboard shortcuts&#x201D; link where you can customize the extension&#x2019;s shortcuts.</p>
+<p>To set/change the keyboard shortcuts, click &#x201C;Keyboard shortcuts&#x201D; button on the bottom of the extensions page (<code>chrome://extensions/</code>). By default only <code>Cmd</code> (<code>Ctrl</code>) + <code>Shift</code> + <code>E</code> is available, which will open the extension popup (only when the Redux store is available in the current page).</p>
 
         </div>
         <div class="footer-nav">

@@ -74,6 +74,60 @@
         ]
       },
       {
+        "title": "Introduction",
+        "sections": [
+          {
+            "title": "Installation"
+          },
+          {
+            "title": "Usage"
+          },
+          {
+            "title": "Ecosystem"
+          },
+          {
+            "title": "Examples"
+          }
+        ]
+      },
+      {
+        "title": "Basics",
+        "sections": [
+          {
+            "title": "Monitors"
+          },
+          {
+            "title": "Instances"
+          },
+          {
+            "title": "Time traveling and hot-reloading"
+          },
+          {
+            "title": "Remote debugging"
+          },
+          {
+            "title": "Dispatching actions"
+          },
+          {
+            "title": "Generating tests"
+          }
+        ]
+      },
+      {
+        "title": "Advanced",
+        "sections": [
+          {
+            "title": "Using in production"
+          },
+          {
+            "title": "Getting reports from users"
+          },
+          {
+            "title": "Dealing with side effects"
+          }
+        ]
+      },
+      {
         "title": "API Reference",
         "source": "docs/API/README.md",
         "url": "API/index.html",
