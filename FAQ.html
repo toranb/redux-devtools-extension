@@ -15,44 +15,6 @@
           <ul class="submenu">
             <li class="menu-item -level-1"><a class="link title  link-index" href="index.html">Redux Extension</a>
             </li>
-            <li class="menu-item -level-1 -parent"><span class="title">Introduction</span>
-              <ul class="submenu">
-                <li class="menu-item -level-2"><span class="title">Installation</span>
-                </li>
-                <li class="menu-item -level-2"><span class="title">Usage</span>
-                </li>
-                <li class="menu-item -level-2"><span class="title">Ecosystem</span>
-                </li>
-                <li class="menu-item -level-2"><span class="title">Examples</span>
-                </li>
-              </ul>
-            </li>
-            <li class="menu-item -level-1 -parent"><span class="title">Basics</span>
-              <ul class="submenu">
-                <li class="menu-item -level-2"><span class="title">Monitors</span>
-                </li>
-                <li class="menu-item -level-2"><span class="title">Instances</span>
-                </li>
-                <li class="menu-item -level-2"><span class="title">Time traveling and hot-reloading</span>
-                </li>
-                <li class="menu-item -level-2"><span class="title">Remote debugging</span>
-                </li>
-                <li class="menu-item -level-2"><span class="title">Dispatching actions</span>
-                </li>
-                <li class="menu-item -level-2"><span class="title">Generating tests</span>
-                </li>
-              </ul>
-            </li>
-            <li class="menu-item -level-1 -parent"><span class="title">Advanced</span>
-              <ul class="submenu">
-                <li class="menu-item -level-2"><span class="title">Using in production</span>
-                </li>
-                <li class="menu-item -level-2"><span class="title">Getting reports from users</span>
-                </li>
-                <li class="menu-item -level-2"><span class="title">Dealing with side effects</span>
-                </li>
-              </ul>
-            </li>
             <li class="menu-item -level-1 -parent"><a class="link title  link-api" href="API/index.html">API Reference</a>
               <ul class="submenu">
                 <li class="menu-item -level-2"><a class="link title  link-apiarguments" href="API/Arguments.html">Parameters</a>
@@ -140,7 +102,7 @@ and you can use the extension as follows:</p>
 <p>Just add <code>?debug_session=&lt;session_name&gt;</code> to the url.</p>
 <h4 id="how-to-include-it-in-chrome-apps-and-extensions">How to include it in chrome apps and extensions</h4>
 <p>Unlike web apps, Chrome extension doesn&#x2019;t inject anything in other chrome extensions or apps, so you have to do it by yourself to allow debugging. Just add:</p>
-<pre><code>&lt;script src=&quot;chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/inject.bundle.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;script src=&quot;chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/redux-devtools-extension.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <p>To include it in a chrome extension&#x2019;s content script follow <a href="https://github.com/zalmoxisus/browser-redux/commit/df2db9ee11f2d197c4329b2c8a6e197da1edffd4">the example</a>.</p>
 <h4 id="how-to-open-devtools-programmatically">How to open DevTools programmatically</h4>

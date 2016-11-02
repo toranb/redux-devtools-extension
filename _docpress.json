@@ -62,6 +62,16 @@
             "id": "demo"
           },
           {
+            "title": "Backers",
+            "depth": 2,
+            "id": "backers"
+          },
+          {
+            "title": "Sponsors",
+            "depth": 2,
+            "id": "sponsors"
+          },
+          {
             "title": "License",
             "depth": 2,
             "id": "license"
@@ -70,60 +80,6 @@
             "title": "Created By",
             "depth": 2,
             "id": "created-by"
-          }
-        ]
-      },
-      {
-        "title": "Introduction",
-        "sections": [
-          {
-            "title": "Installation"
-          },
-          {
-            "title": "Usage"
-          },
-          {
-            "title": "Ecosystem"
-          },
-          {
-            "title": "Examples"
-          }
-        ]
-      },
-      {
-        "title": "Basics",
-        "sections": [
-          {
-            "title": "Monitors"
-          },
-          {
-            "title": "Instances"
-          },
-          {
-            "title": "Time traveling and hot-reloading"
-          },
-          {
-            "title": "Remote debugging"
-          },
-          {
-            "title": "Dispatching actions"
-          },
-          {
-            "title": "Generating tests"
-          }
-        ]
-      },
-      {
-        "title": "Advanced",
-        "sections": [
-          {
-            "title": "Using in production"
-          },
-          {
-            "title": "Getting reports from users"
-          },
-          {
-            "title": "Dealing with side effects"
           }
         ]
       },
@@ -319,6 +275,16 @@
           "title": "Demo",
           "depth": 2,
           "id": "demo"
+        },
+        {
+          "title": "Backers",
+          "depth": 2,
+          "id": "backers"
+        },
+        {
+          "title": "Sponsors",
+          "depth": 2,
+          "id": "sponsors"
         },
         {
           "title": "License",
