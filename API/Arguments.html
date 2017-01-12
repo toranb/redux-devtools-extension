@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../assets/style.css?t=d358ee59">
-    <script src="../assets/script.js?t=36f3d457"></script>
+    <script src="../assets/script.js?t=42463e55"></script>
     <title>Parameters - Redux Extension</title>
     <meta name="viewport" content="width=device-width">
   </head>
@@ -83,10 +83,7 @@
 <p><strong>shouldHotReload</strong> <em>boolean</em> - if set to <code>false</code>, will not recompute the states on hot reloading (or on replacing the reducers). Default to <code>true</code>.</p>
 </li>
 <li>
-<p><strong>deserializeState(state): transformedState</strong> (<em>function</em>) - optional transformation of state deserialized from debug session (useful if state is not plain object. Example: immutable-js state)</p>
-<ul>
-<li>
-<p>state, transformedState - Redux state objects.
+<p><strong>deserializeState(state): transformedState</strong> / <strong>deserializeAction(action): transformedAction</strong> (<em>function</em>) - optional transformation of state / action deserialized from debug session (useful if state is not plain object. Example: immutable-js state). <em><strong>Deprecated</strong>. Use <code>serialize</code> instead!</em>
 Example of usage:</p>
 <pre><code class="lang-js"><span class="pl-k">const</span> store = createStore(rootReducer, <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__({
   <span class="hljs-attr">deserializeState</span>: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> ({
@@ -98,40 +95,22 @@ Example of usage:</p>
 }));
 </code></pre>
 </li>
+<li>
+<p><strong>serialize</strong> (<em>object</em>) - contains <code>{ replacer: function, reviver: function, options: object/boolean }</code></p>
+<ul>
+<li><strong>replacer</strong> <code>function(key, value)</code> - <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_replacer_parameter">JSON <code>replacer</code> function</a> used for both actions and states stringify.</li>
+<li><strong>reviver</strong> <code>function(key, value)</code> - <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#Using_the_reviver_parameter">JSON <code>reviver</code> function</a> used for parsing the imported actions and states.</li>
+<li><strong>options</strong> <code>object or boolean</code>:
+<ul>
+<li><code>undefined</code> - use regular <code>JSON.stringify</code> to send data - the fast mode.</li>
+<li><code>false</code> - handle only circular references.</li>
+<li><code>true</code> - handle also dates, regexes, undefined, error objects, symbols, and functions.</li>
+<li>object, which contains <code>date</code>, <code>regex</code>, <code>undefined</code>, <code>error</code>, and <code>function</code> keys. Fo each of them you can indicate whether to include (if set as <code>true</code>). For <code>function</code> key you can also specify a custom function which handles serialization. See <a href="https://github.com/kolodny/jsan"><code>jsan</code></a> for more details. Example:</li>
 </ul>
 </li>
-<li>
-<p><strong>deserializeAction(action): transformedAction</strong> (<em>function</em>) - optional transformation of actions deserialized from debug session (useful if actions are not plain object. Example: immutable-js action payload)</p>
-<ul>
-<li>action, transformedAction - Redux action objects</li>
 </ul>
-</li>
-<li>
-<p><strong>serializeState</strong> (<em>boolean or function or object</em>) - specify how and what should be handled during serialization (useful if state is not plain object). It will affect the extension&#x2019;s performance significantly!
-Could be:</p>
-<ul>
-<li>
-<p><code>undefined</code> - use regular <code>JSON.stringify</code> to send data - the fast mode.</p>
-</li>
-<li>
-<p><code>false</code> - handle only circular references.</p>
-</li>
-<li>
-<p><code>true</code> - handle also dates, regexes, undefined, error objects, symbols, and functions.</p>
-</li>
-<li>
-<p><code>function(key, value)</code> - JSON replacer. Example of usage with mori data structures:</p>
 <pre><code class="lang-js"><span class="pl-k">const</span> store = Redux.createStore(reducer, <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__({
-  <span class="hljs-attr">serializeState</span>: <span class="hljs-function">(<span class="hljs-params">key, value</span>) =&gt;</span> (
-    value &amp;&amp; mori.isMap(value) ? mori.toJs(value) : value
-  )
-}));
-</code></pre>
-</li>
-<li>
-<p>object (<code>{ replacer: function, options: object }</code>) - in addition to the replacer function, specify an options object, which contains <code>date</code>, <code>regexe</code>, <code>undefined</code>, <code>error</code>, and <code>function</code> keys. Fo each of them you can indicate whether to include (if set as <code>true</code>). For <code>function</code> key you can also specify a custom function which handles serialization. See <a href="https://github.com/kolodny/jsan"><code>jsan</code></a> for more details. Example:</p>
-<pre><code class="lang-js"><span class="pl-k">const</span> store = Redux.createStore(reducer, <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__({
-  <span class="hljs-attr">serializeState</span>: { 
+  <span class="hljs-attr">serialize</span>: { 
     <span class="hljs-attr">options</span>: {
      <span class="hljs-attr">undefined</span>: <span class="pl-c1">true</span>,
      <span class="hljs-attr">function</span>: <span class="hljs-function"><span class="pl-k">function</span>(<span class="hljs-params">fn</span>) </span>{ <span class="pl-k">return</span> fn.toString() }
@@ -139,11 +118,13 @@ Could be:</p>
   }
 }));
 </code></pre>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>serializeAction</strong> (<em>boolean or function or object</em>) - same as <code>serializeState</code> but used for actions payloads.</p>
+<p>Example of usage with mori data structures:</p>
+<pre><code class="lang-js"><span class="pl-k">const</span> store = Redux.createStore(reducer, <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__({
+  <span class="hljs-attr">serialize</span>: {
+    <span class="hljs-attr">replacer</span>: <span class="hljs-function">(<span class="hljs-params">key, value</span>) =&gt;</span> value &amp;&amp; mori.isMap(value) ? mori.toJs(value) : value
+  }
+}));
+</code></pre>
 </li>
 <li>
 <p><strong>actionsBlacklist</strong> (<em>array</em>) - actions to be hidden in DevTools. Overwrites corresponding global setting in the options page.</p>

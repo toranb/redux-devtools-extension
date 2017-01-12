@@ -187,6 +187,11 @@
             "title": "It shows only the `@@INIT` action or moving back and forth doesn't update the state",
             "depth": 3,
             "id": "it-shows-only-the-@@init-action-or-moving-back-and-forth-doesn't-update-the-state"
+          },
+          {
+            "title": "It doesn't work with other store enhancers",
+            "depth": 3,
+            "id": "it-doesn't-work-with-other-store-enhancers"
           }
         ]
       },
@@ -355,6 +360,11 @@
           "title": "It shows only the `@@INIT` action or moving back and forth doesn't update the state",
           "depth": 3,
           "id": "it-shows-only-the-@@init-action-or-moving-back-and-forth-doesn't-update-the-state"
+        },
+        {
+          "title": "It doesn't work with other store enhancers",
+          "depth": 3,
+          "id": "it-doesn't-work-with-other-store-enhancers"
         }
       ]
     },

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="assets/style.css?t=d358ee59">
-    <script src="assets/script.js?t=36f3d457"></script>
+    <script src="assets/script.js?t=42463e55"></script>
     <title>Troubleshooting - Redux Extension</title>
     <meta name="viewport" content="width=device-width">
   </head>
@@ -37,6 +37,8 @@
                 </li>
                 <li class="heading-item -depth-3"><a class="hlink link-it-shows-only-the-@@init-action-or-moving-back-and-forth-doesn't-update-the-state" href="#it-shows-only-the-@@init-action-or-moving-back-and-forth-doesn't-update-the-state">It shows only the `@@INIT` action or moving back and forth doesn't update the state</a>
                 </li>
+                <li class="heading-item -depth-3"><a class="hlink link-it-doesn't-work-with-other-store-enhancers" href="#it-doesn't-work-with-other-store-enhancers">It doesn't work with other store enhancers</a>
+                </li>
               </ul>
             </li>
             <li class="menu-item -level-1 -parent"><span class="title">Project</span>
@@ -67,6 +69,15 @@
 <img width="746" alt="extensions" src="https://cloud.githubusercontent.com/assets/7957859/19075220/a0fad99e-8a4c-11e6-8b87-757f2dc179cb.png">
 <h3 id="it-shows-only-the-@@init-action-or-moving-back-and-forth-doesn&apos;t-update-the-state">It shows only the <code>@@INIT</code> action or moving back and forth doesn&#x2019;t update the state</h3>
 <p>Most likely you mutate the state. Check it by <a href="https://github.com/zalmoxisus/redux-devtools-extension/blob/master/examples/counter/store/configureStore.js#L3">adding <code>redux-immutable-state-invariant</code> middleware</a>.</p>
+<h3 id="it-doesn&apos;t-work-with-other-store-enhancers">It doesn&#x2019;t work with other store enhancers</h3>
+<p>Usually the extension&#x2019;s store enhancer should be last in the compose. When you&#x2019;re using <code>window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__</code> or <code>composeWithDevTools</code> helper you don&#x2019;t have to worry about the enhancers order. However some enhancers (<a href="https://github.com/zalmoxisus/redux-devtools-extension/issues/261">like <code>redux-batched-subscribe</code></a>) also have this requirement to be the last in the compose. In this case you can use it like so:</p>
+<pre><code class="lang-js"><span class="pl-k">const</span> store = createStore(reducer, preloadedState, compose(
+  <span class="pl-c">// applyMiddleware(thunk),</span>
+  <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__ ? <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__() : <span class="hljs-function"><span class="hljs-params">noop</span> =&gt;</span> noop,
+  batchedSubscribe(<span class="pl-c">/* ... */</span>)
+));
+</code></pre>
+<p>Where <code>batchedSubscribe</code> is <code>redux-batched-subscribe</code> store enhancer.</p>
 
         </div>
         <div class="footer-nav">
