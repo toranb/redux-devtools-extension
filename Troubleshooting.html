@@ -39,6 +39,10 @@
                 </li>
                 <li class="heading-item -depth-3"><a class="hlink link-it-doesn't-work-with-other-store-enhancers" href="#it-doesn't-work-with-other-store-enhancers">It doesn't work with other store enhancers</a>
                 </li>
+                <li class="heading-item -depth-3"><a class="hlink link-it-fails-to-serialize-data-when-passing-synthetic-events(https:github.comzalmoxisusredux-devtools-extensionissues275)-or-calling-an-action-directly-with-redux-actions(https:github.comzalmoxisusredux-devtools-extensionissues287)" href="#it-fails-to-serialize-data-when-passing-synthetic-events(https:github.comzalmoxisusredux-devtools-extensionissues275)-or-calling-an-action-directly-with-redux-actions(https:github.comzalmoxisusredux-devtools-extensionissues287)">It fails to serialize data when [passing synthetic events](https://github.com/zalmoxisus/redux-devtools-extension/issues/275) or [calling an action directly with `redux-actions`](https://github.com/zalmoxisus/redux-devtools-extension/issues/287)</a>
+                </li>
+                <li class="heading-item -depth-3"><a class="hlink link-symbols-or-other-unserializable-data-not-shown" href="#symbols-or-other-unserializable-data-not-shown">Symbols or other unserializable data not shown</a>
+                </li>
               </ul>
             </li>
             <li class="menu-item -level-1 -parent"><span class="title">Project</span>
@@ -78,6 +82,63 @@
 ));
 </code></pre>
 <p>Where <code>batchedSubscribe</code> is <code>redux-batched-subscribe</code> store enhancer.</p>
+<h3 id="it-fails-to-serialize-data-when-passing-synthetic-events-or-calling-an-action-directly-with-redux-actions">It fails to serialize data when <a href="https://github.com/zalmoxisus/redux-devtools-extension/issues/275">passing synthetic events</a> or <a href="https://github.com/zalmoxisus/redux-devtools-extension/issues/287">calling an action directly with <code>redux-actions</code></a></h3>
+<p>React synthetic event cannot be reused for performance reason. So, it&#x2019;s not possible to serialize event objects you pass to action payloads.</p>
+<ol>
+<li>The best solution is not to pass the whole event object to reducers, but the data you need:</li>
+</ol>
+<pre><code class="lang-diff">function click(event) {
+  return {
+    type: ELEMENT_CLICKED,
+<span class="hljs-deletion">-    event: event</span>
+<span class="hljs-addition">+    value: event.target.value</span>
+  };
+}
+</code></pre>
+<ol start="2">
+<li>
+<p>Another solution would be to use <code>event.persist()</code> (in the example above) as suggested in <a href="https://facebook.github.io/react/docs/events.html#event-pooling">React Docs</a>, but it will consume RAM while not needed.</p>
+</li>
+<li>
+<p>If you still need to pass it to an action, you can override this key of the stringified payload in your action creator, by adding a custom <code>toJSON</code> function (which will be called by the extension before accessing the object):</p>
+<pre><code class="lang-diff">function increment(event) {
+  return {
+    type: INCREMENT_COUNTER,
+    event,
+<span class="hljs-addition">+   toJSON: function (){</span>
+<span class="hljs-addition">+     return { ...this, event: &apos;[Event]&apos; };</span>
+<span class="hljs-addition">+   }</span>
+  };
+}
+</code></pre>
+<p>Note that it shouldn&#x2019;t be arrow function as we want to have access to the function&#x2019;s <code>this</code>.</p>
+<p>As we don&#x2019;t have access to the original object, skipping and recomputing actions during hot reloading will not work in this case. So better to use the required value from the event than the whole event object.</p>
+</li>
+<li>
+<p>If you don&#x2019;t want to add <code>toJSON</code> to action creators, a solution to prevent this, would be to use <code>serialize</code> parameter and to check if it&#x2019;s an instance of <code>SyntheticEvent</code> like so:</p>
+<pre><code class="lang-js"><span class="pl-k">import</span> SyntheticEvent <span class="pl-k">from</span> <span class="pl-s">&apos;react/lib/SyntheticEvent&apos;</span>;
+<span class="pl-c">// ...</span>
+
+<span class="pl-k">const</span> store = createStore(rootReducer, <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__({
+  <span class="hljs-attr">serialize</span>: {
+    <span class="hljs-attr">replacer</span>: <span class="hljs-function">(<span class="hljs-params">key, value</span>) =&gt;</span> {
+      <span class="pl-k">if</span> (value &amp;&amp; value <span class="pl-k">instanceof</span> SyntheticEvent) <span class="pl-k">return</span> <span class="pl-s">&apos;[Event]&apos;</span>;
+      <span class="pl-k">return</span> value;
+    }
+  }
+}));
+</code></pre>
+</li>
+</ol>
+<h3 id="symbols-or-other-unserializable-data-not-shown">Symbols or other unserializable data not shown</h3>
+<p>To get data which cannot be serialized by <code>JSON.stringify</code>, use <code>serialize</code> parameter, setting <code>options</code> to <code>true</code>:</p>
+<pre><code class="lang-js"><span class="pl-k">const</span> store = Redux.createStore(reducer, <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; <span class="pl-c1">window</span>.__REDUX_DEVTOOLS_EXTENSION__({
+   <span class="hljs-attr">serialize</span>: { 
+     <span class="hljs-attr">options</span>: <span class="pl-c1">true</span>
+  }
+}));
+</code></pre>
+<p>It will handle dates, regexes, undefined, error objects, symbols and functions.</p>
 
         </div>
         <div class="footer-nav">

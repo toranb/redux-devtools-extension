@@ -192,6 +192,16 @@
             "title": "It doesn't work with other store enhancers",
             "depth": 3,
             "id": "it-doesn't-work-with-other-store-enhancers"
+          },
+          {
+            "title": "It fails to serialize data when [passing synthetic events](https://github.com/zalmoxisus/redux-devtools-extension/issues/275) or [calling an action directly with `redux-actions`](https://github.com/zalmoxisus/redux-devtools-extension/issues/287)",
+            "depth": 3,
+            "id": "it-fails-to-serialize-data-when-passing-synthetic-events(https:github.comzalmoxisusredux-devtools-extensionissues275)-or-calling-an-action-directly-with-redux-actions(https:github.comzalmoxisusredux-devtools-extensionissues287)"
+          },
+          {
+            "title": "Symbols or other unserializable data not shown",
+            "depth": 3,
+            "id": "symbols-or-other-unserializable-data-not-shown"
           }
         ]
       },
@@ -365,6 +375,16 @@
           "title": "It doesn't work with other store enhancers",
           "depth": 3,
           "id": "it-doesn't-work-with-other-store-enhancers"
+        },
+        {
+          "title": "It fails to serialize data when [passing synthetic events](https://github.com/zalmoxisus/redux-devtools-extension/issues/275) or [calling an action directly with `redux-actions`](https://github.com/zalmoxisus/redux-devtools-extension/issues/287)",
+          "depth": 3,
+          "id": "it-fails-to-serialize-data-when-passing-synthetic-events(https:github.comzalmoxisusredux-devtools-extensionissues275)-or-calling-an-action-directly-with-redux-actions(https:github.comzalmoxisusredux-devtools-extensionissues287)"
+        },
+        {
+          "title": "Symbols or other unserializable data not shown",
+          "depth": 3,
+          "id": "symbols-or-other-unserializable-data-not-shown"
         }
       ]
     },
